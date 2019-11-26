@@ -1,0 +1,226 @@
+{
+	"info": {
+		"_postman_id": "4ac672c2-4e61-4f06-996b-f0d0c38456eb",
+		"name": "Formulary",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "All Drugs",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/fhir+json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/MedicationKnowledge?_profile=http://hl7.org/fhir/us/Davinci-drug-formulary/StructureDefinition/usdf-FormularyDrug",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"MedicationKnowledge"
+					],
+					"query": [
+						{
+							"key": "_profile",
+							"value": "http://hl7.org/fhir/us/Davinci-drug-formulary/StructureDefinition/usdf-FormularyDrug"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Plans",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/fhir+json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/List?_profile=http://hl7.org/fhir/us/Davinci-drug-formulary/StructureDefinition/usdf-CoveragePlan",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"List"
+					],
+					"query": [
+						{
+							"key": "_profile",
+							"value": "http://hl7.org/fhir/us/Davinci-drug-formulary/StructureDefinition/usdf-CoveragePlan"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Generic Drug Search Within a Plan",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/fhir+json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/MedicationKnowledge?DrugPlan=10207VA0380003&DrugTier=generic&_profile=http://hl7.org/fhir/us/Davinci-drug-formulary/StructureDefinition/usdf-FormularyDrug",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"MedicationKnowledge"
+					],
+					"query": [
+						{
+							"key": "DrugPlan",
+							"value": "10207VA0380003"
+						},
+						{
+							"key": "DrugTier",
+							"value": "generic"
+						},
+						{
+							"key": "_profile",
+							"value": "http://hl7.org/fhir/us/Davinci-drug-formulary/StructureDefinition/usdf-FormularyDrug"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Drugs from A Plan",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/fhir+json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/MedicationKnowledge?DrugPlan=10207VA0380003",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"MedicationKnowledge"
+					],
+					"query": [
+						{
+							"key": "DrugPlan",
+							"value": "10207VA0380003"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query Drug by RxNorm Code and PlanID (returning both Drug and Plan Info)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/MedicationKnowledge?_revinclude=List:item&code=1000001,1000048&DrugPlan=10207VA0380003",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"MedicationKnowledge"
+					],
+					"query": [
+						{
+							"key": "_revinclude",
+							"value": "List:item"
+						},
+						{
+							"key": "code",
+							"value": "1000001,1000048"
+						},
+						{
+							"key": "DrugPlan",
+							"value": "10207VA0380003"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CoveragePlan and All Referenced Drugs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/List?_profile=http://hl7.org/fhir/us/Davinci-drug-formulary/StructureDefinition/usdf-CoveragePlan&identifier=10207VA0380003&_include=List:item",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"List"
+					],
+					"query": [
+						{
+							"key": "_profile",
+							"value": "http://hl7.org/fhir/us/Davinci-drug-formulary/StructureDefinition/usdf-CoveragePlan"
+						},
+						{
+							"key": "identifier",
+							"value": "10207VA0380003"
+						},
+						{
+							"key": "_include",
+							"value": "List:item"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "5f9bcc1f-5f7a-4fe8-b3d2-304c56bf20f0",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "e4bfe7c9-c5c3-4bed-92d1-733b7a89b766",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "8eef7cdb-7d7f-4327-ab4b-609797b5b046",
+			"key": "url",
+			"value": "https://davinci-drug-formulary-ri.logicahealth.org/fhir",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
